@@ -1,4 +1,4 @@
-package com.dvipersquad.tajawal.hoteldetails;
+package com.dvipersquad.tajawal.hotels;
 
 import com.dvipersquad.tajawal.di.ActivityScoped;
 import com.dvipersquad.tajawal.di.FragmentScoped;
@@ -12,14 +12,12 @@ import dagger.android.ContributesAndroidInjector;
  */
 
 @Module
-public abstract class HotelDetailsPresenterModule {
-
+public abstract class HotelsModule {
     @FragmentScoped
     @ContributesAndroidInjector
-    abstract HotelDetailsFragment hotelDetailsFragment();
+    abstract HotelsFragment hotelsFragment();
 
     @ActivityScoped
     @Binds
-    abstract HotelDetailsContract.Presenter detailsPresenter(HotelDetailsPresenter presenter);
-
+    abstract HotelsContract.Presenter hotelPresenter(HotelsPresenter presenter);
 }

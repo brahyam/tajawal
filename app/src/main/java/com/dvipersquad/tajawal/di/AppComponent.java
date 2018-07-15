@@ -1,8 +1,37 @@
 package com.dvipersquad.tajawal.di;
 
+import android.app.Application;
+
+import com.dvipersquad.tajawal.TajawalApp;
+import com.dvipersquad.tajawal.data.source.HotelsRepository;
+import com.dvipersquad.tajawal.data.source.HotelsRepositoryModule;
+
+import javax.inject.Singleton;
+
+import dagger.BindsInstance;
+import dagger.Component;
+import dagger.android.AndroidInjector;
+import dagger.android.support.AndroidSupportInjectionModule;
+
 /**
  * Created by Brahyam on 15-Jul-18.
  */
+@Singleton
+@Component(modules = {HotelsRepositoryModule.class,
+        AppModule.class,
+        ActivityBindingModule.class,
+        AndroidSupportInjectionModule.class})
+public interface AppComponent extends AndroidInjector<TajawalApp> {
 
-public class AppComponent {
+    HotelsRepository getHotelsRepository();
+
+    // Enable us to doDaggerAppComponent.builder().application(this).build().inject(this);
+    // Includes application in graph
+    @Component.Builder
+    interface Builder {
+        @BindsInstance
+        AppComponent.Builder application(Application application);
+
+        AppComponent build();
+    }
 }

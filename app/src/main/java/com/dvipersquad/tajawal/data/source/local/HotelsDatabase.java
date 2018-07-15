@@ -1,8 +1,14 @@
 package com.dvipersquad.tajawal.data.source.local;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
+import android.arch.persistence.room.Database;
+import android.arch.persistence.room.RoomDatabase;
 
-public class HotelsDatabase {
+import com.dvipersquad.tajawal.data.Hotel;
+
+/**
+ * The Room Database that contains the Hotel table.
+ */
+@Database(entities = {Hotel.class}, version = 1)
+public abstract class HotelsDatabase extends RoomDatabase {
+    public abstract HotelsDao hotelsDao();
 }
