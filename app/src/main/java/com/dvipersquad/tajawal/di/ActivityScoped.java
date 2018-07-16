@@ -7,9 +7,9 @@ import java.lang.annotation.RetentionPolicy;
 import javax.inject.Scope;
 
 /**
- * Created by Brahyam on 15-Jul-18.
+ * Ass unscoped components cant depend on scoped components and fragments are injected
+ * we will apply this scope to all fragments
  */
-
 @Documented
 @Scope
 @Retention(RetentionPolicy.RUNTIME)

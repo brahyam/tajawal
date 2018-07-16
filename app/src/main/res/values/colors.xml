@@ -6,4 +6,7 @@
     <color name="colorRecyclerRowText">#3a3a3a</color>
     <color name="colorRecyclerRowBackground">#FFF</color>
     <color name="colorRecyclerBackground">#F2F2F2</color>
+    <color name="colorHotelDetailsTitle">#FFF</color>
+    <color name="colorHotelDetailsButtonText">#FFF</color>
+    <color name="colorHotelDetailsOverlay">#5000</color>
 </resources>

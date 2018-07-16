@@ -13,9 +13,6 @@ import dagger.Component;
 import dagger.android.AndroidInjector;
 import dagger.android.support.AndroidSupportInjectionModule;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
 @Singleton
 @Component(modules = {HotelsRepositoryModule.class,
         AppModule.class,

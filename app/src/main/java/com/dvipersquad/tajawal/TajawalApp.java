@@ -8,10 +8,6 @@ import javax.inject.Inject;
 import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
-
 public class TajawalApp extends DaggerApplication {
 
     @Inject

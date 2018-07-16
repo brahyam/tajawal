@@ -8,10 +8,6 @@ import com.dvipersquad.tajawal.hotels.HotelsModule;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
-
 @Module
 public abstract class ActivityBindingModule {
     @ActivityScoped

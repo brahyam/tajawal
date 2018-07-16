@@ -5,11 +5,8 @@ import com.dvipersquad.tajawal.di.FragmentScoped;
 
 import dagger.Binds;
 import dagger.Module;
+import dagger.Provides;
 import dagger.android.ContributesAndroidInjector;
-
-/**
- * Created by Brahyam on 15-Jul-18.
- */
 
 @Module
 public abstract class HotelDetailsPresenterModule {
@@ -21,5 +18,11 @@ public abstract class HotelDetailsPresenterModule {
     @ActivityScoped
     @Binds
     abstract HotelDetailsContract.Presenter detailsPresenter(HotelDetailsPresenter presenter);
+
+    @Provides
+    @ActivityScoped
+    static Integer provideHotelId(HotelDetailsActivity activity) {
+        return activity.getIntent().getIntExtra(HotelDetailsActivity.EXTRA_HOTEL_ID, -1);
+    }
 
 }

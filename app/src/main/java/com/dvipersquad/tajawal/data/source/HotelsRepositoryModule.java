@@ -10,7 +10,6 @@ import com.dvipersquad.tajawal.data.source.remote.HotelsRemoteDataSource;
 import com.dvipersquad.tajawal.utils.AppExecutors;
 import com.dvipersquad.tajawal.utils.DiskIOThreadExecutor;
 
-import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 import javax.inject.Singleton;
@@ -18,9 +17,6 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
 
 @Module
 public class HotelsRepositoryModule {
