@@ -1,5 +1,6 @@
 package com.dvipersquad.tajawal.hoteldetails;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import com.dvipersquad.tajawal.R;
 import com.dvipersquad.tajawal.data.Hotel;
 import com.dvipersquad.tajawal.di.ActivityScoped;
+import com.dvipersquad.tajawal.fullscreenphoto.FullScreenPhotoActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.Locale;
@@ -36,6 +38,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
     @Inject
     HotelDetailsContract.Presenter presenter;
 
+    View viewOverlay;
     ImageView imgHotelDetailsCover;
     TextView txtHotelName;
     TextView txtHotelHighRate;
@@ -62,6 +65,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.hoteldetails_frag, container, false);
+        viewOverlay = root.findViewById(R.id.viewOverlay);
         imgHotelDetailsCover = root.findViewById(R.id.imgHotelDetailsCover);
         txtHotelName = root.findViewById(R.id.txtHotelName);
         txtHotelHighRate = root.findViewById(R.id.txtHotelHighRate);
@@ -81,7 +85,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
     }
 
     @Override
-    public void showHotel(Hotel hotel) {
+    public void showHotel(final Hotel hotel) {
         if (hotel.getImage() != null && hotel.getImage().size() > 0) {
             Picasso.get()
                     .load(hotel.getImage().get(0).getUrl())
@@ -107,6 +111,12 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
         if (hotel.getLocation() != null) {
             txtHotelAddress.setText(hotel.getLocation().getAddress());
         }
+        viewOverlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.showHotelPhotoFullScreen(hotel);
+            }
+        });
     }
 
     @Override
@@ -115,6 +125,13 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
         txtHotelHighRate.setText("");
         txtHotelLowRate.setText(getString(R.string.no_data_available));
         txtHotelAddress.setText("");
+    }
+
+    @Override
+    public void showPhotoFullScreenUI(String photoUrl) {
+        Intent intent = new Intent(getContext(), FullScreenPhotoActivity.class);
+        intent.putExtra(FullScreenPhotoActivity.EXTRA_PHOTO_URL, photoUrl);
+        startActivity(intent);
     }
 
     @Override

@@ -19,5 +19,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".hoteldetails.HotelDetailsActivity" />
+        <activity android:name=".fullscreenphoto.FullScreenPhotoActivity" />
     </application>
 </manifest>

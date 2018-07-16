@@ -1,6 +1,7 @@
 package com.dvipersquad.tajawal.hoteldetails;
 
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.dvipersquad.tajawal.data.Hotel;
@@ -20,7 +21,7 @@ final class HotelDetailsPresenter implements HotelDetailsContract.Presenter {
     private Integer hotelId;
 
     @Inject
-    public HotelDetailsPresenter(@Nullable Integer hotelId, HotelsRepository hotelsRepository) {
+    HotelDetailsPresenter(@Nullable Integer hotelId, HotelsRepository hotelsRepository) {
         this.hotelsRepository = hotelsRepository;
         this.hotelId = hotelId;
     }
@@ -70,5 +71,12 @@ final class HotelDetailsPresenter implements HotelDetailsContract.Presenter {
     @Override
     public void dropView() {
         hotelDetailsView = null;
+    }
+
+    @Override
+    public void showHotelPhotoFullScreen(@NonNull Hotel hotel) {
+        if (hotelDetailsView != null && hotel.getImage() != null && hotel.getImage().size() > 0) {
+            hotelDetailsView.showPhotoFullScreenUI(hotel.getImage().get(0).getUrl());
+        }
     }
 }

@@ -23,7 +23,8 @@ public class HotelDetailsActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hoteldetails_act);
 
-        HotelDetailsFragment hotelDetailsFragment = (HotelDetailsFragment) getSupportFragmentManager()
+        HotelDetailsFragment hotelDetailsFragment =
+                (HotelDetailsFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.contentFrame);
 
         if (hotelDetailsFragment == null) {

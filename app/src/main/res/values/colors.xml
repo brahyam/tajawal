@@ -9,4 +9,5 @@
     <color name="colorHotelDetailsTitle">#FFF</color>
     <color name="colorHotelDetailsButtonText">#FFF</color>
     <color name="colorHotelDetailsOverlay">#5000</color>
+    <color name="colorFullScreenPhotoBackground">#000</color>
 </resources>

@@ -1,5 +1,7 @@
 package com.dvipersquad.tajawal.hoteldetails;
 
+import android.support.annotation.NonNull;
+
 import com.dvipersquad.tajawal.BasePresenter;
 import com.dvipersquad.tajawal.BaseView;
 import com.dvipersquad.tajawal.data.Hotel;
@@ -18,14 +20,18 @@ public interface HotelDetailsContract {
 
         void showMissingHotel();
 
+        void showPhotoFullScreenUI(String photoUrl);
+
         boolean isActive();
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void takeView(HotelDetailsContract.View HotelDetailsFragment);
+        void takeView(HotelDetailsContract.View hotelDetailsFragment);
 
         void dropView();
+
+        void showHotelPhotoFullScreen(@NonNull Hotel hotel);
     }
 
 }
