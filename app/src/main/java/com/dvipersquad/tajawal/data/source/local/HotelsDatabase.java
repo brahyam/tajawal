@@ -8,7 +8,7 @@ import com.dvipersquad.tajawal.data.Hotel;
 /**
  * The Room Database that contains the Hotel table.
  */
-@Database(entities = {Hotel.class}, version = 1)
+@Database(entities = {Hotel.class}, version = 1, exportSchema = false)
 public abstract class HotelsDatabase extends RoomDatabase {
     public abstract HotelsDao hotelsDao();
 }

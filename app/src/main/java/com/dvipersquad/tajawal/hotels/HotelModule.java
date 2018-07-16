@@ -1,8 +1,22 @@
 package com.dvipersquad.tajawal.hotels;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
+import com.dvipersquad.tajawal.di.ActivityScoped;
+import com.dvipersquad.tajawal.di.FragmentScoped;
 
-public class HotelModule {
+import dagger.Binds;
+import dagger.Module;
+import dagger.android.ContributesAndroidInjector;
+
+/**
+ * Passes View dependency to HotelsPresenter
+ */
+@Module
+public abstract class HotelModule {
+    @FragmentScoped
+    @ContributesAndroidInjector
+    abstract HotelsFragment hotelsFragment();
+
+    @ActivityScoped
+    @Binds
+    abstract HotelsContract.Presenter hotelPresenter(HotelsPresenter presenter);
 }

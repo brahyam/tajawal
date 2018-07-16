@@ -1,8 +1,10 @@
 package com.dvipersquad.tajawal.data.source.remote;
 
 import android.support.annotation.NonNull;
+import android.util.Log;
 
 import com.dvipersquad.tajawal.data.Hotel;
+import com.dvipersquad.tajawal.data.HotelList;
 import com.dvipersquad.tajawal.data.source.HotelsDataSource;
 import com.dvipersquad.tajawal.data.source.local.HotelsDao;
 import com.dvipersquad.tajawal.utils.AppExecutors;
@@ -25,7 +27,8 @@ import retrofit2.http.GET;
 @Singleton
 public class HotelsRemoteDataSource implements HotelsDataSource {
 
-    private final static String API_URL = "http://gchbib.de/tajawal";
+    private final static String API_URL = "http://gchbib.de/tajawal/";
+    private static final String TAG = HotelsRemoteDataSource.class.getSimpleName();
     private HotelsApi hotelsApi;
 
     public HotelsRemoteDataSource() {
@@ -39,19 +42,20 @@ public class HotelsRemoteDataSource implements HotelsDataSource {
 
     @Override
     public void getHotels(@NonNull final LoadHotelsCallback callback) {
-        Call<List<Hotel>> call = hotelsApi.getHotels();
-        call.enqueue(new Callback<List<Hotel>>() {
+        Call<HotelList> call = hotelsApi.getHotels();
+        call.enqueue(new Callback<HotelList>() {
             @Override
-            public void onResponse(Call<List<Hotel>> call, Response<List<Hotel>> response) {
-                if (response.isSuccessful()) {
-                    callback.onHotelsLoaded(response.body());
+            public void onResponse(Call<HotelList> call, Response<HotelList> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    callback.onHotelsLoaded(response.body().getHotels());
                 } else {
                     callback.onDataNotAvailable();
                 }
             }
 
             @Override
-            public void onFailure(Call<List<Hotel>> call, Throwable t) {
+            public void onFailure(Call<HotelList> call, Throwable t) {
+                Log.e(TAG, t.getMessage());
                 callback.onDataNotAvailable();
             }
         });
@@ -88,7 +92,7 @@ public class HotelsRemoteDataSource implements HotelsDataSource {
     }
 
     private interface HotelsApi {
-        @GET("/hotels_exercise.json")
-        Call<List<Hotel>> getHotels();
+        @GET("hotels_exercise.json")
+        Call<HotelList> getHotels();
     }
 }

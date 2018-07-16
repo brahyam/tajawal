@@ -6,23 +6,23 @@ package com.dvipersquad.tajawal.data;
 
 public class HotelSummary {
 
-    private final Long highRate;
+    private final Float highRate;
 
-    private final Long lowRate;
+    private final Float lowRate;
 
     private final String hotelName;
 
-    public HotelSummary(Long highRate, Long lowRate, String hotelName) {
+    public HotelSummary(Float highRate, Float lowRate, String hotelName) {
         this.highRate = highRate;
         this.lowRate = lowRate;
         this.hotelName = hotelName;
     }
 
-    public Long getHighRate() {
+    public Float getHighRate() {
         return highRate;
     }
 
-    public Long getLowRate() {
+    public Float getLowRate() {
         return lowRate;
     }
 

@@ -7,4 +7,5 @@ import dagger.android.support.DaggerAppCompatActivity;
  */
 
 public class HotelDetailsActivity extends DaggerAppCompatActivity {
+    public static final String EXTRA_HOTEL_ID = "HOTEL_ID";
 }

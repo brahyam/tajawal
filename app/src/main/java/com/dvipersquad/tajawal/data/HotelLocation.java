@@ -8,11 +8,11 @@ public class HotelLocation {
 
     private final String address;
 
-    private final Long latitude;
+    private final Float latitude;
 
-    private final Long longitude;
+    private final Float longitude;
 
-    public HotelLocation(String address, Long latitude, Long longitude) {
+    public HotelLocation(String address, Float latitude, Float longitude) {
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -22,11 +22,11 @@ public class HotelLocation {
         return address;
     }
 
-    public Long getLatitude() {
+    public Float getLatitude() {
         return latitude;
     }
 
-    public Long getLongitude() {
+    public Float getLongitude() {
         return longitude;
     }
 }
