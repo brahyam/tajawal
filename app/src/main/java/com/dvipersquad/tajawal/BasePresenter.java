@@ -1,9 +1,5 @@
 package com.dvipersquad.tajawal;
 
-/**
- * Created by Brahyam on 15-Jul-18.
- */
-
 public interface BasePresenter<T> {
     /**
      * Binds presenter with a view when resumed. The Presenter will perform initialization here.

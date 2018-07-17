@@ -26,7 +26,7 @@ public class HotelsActivity extends DaggerAppCompatActivity {
 
         HotelsFragment hotelsFragment = (HotelsFragment)
                 getSupportFragmentManager().findFragmentById(R.id.contentFrame);
-
+        // Attach fragment if not found
         if (hotelsFragment == null) {
             hotelsFragment = hotelsFragmentProvider.get();
             ActivityUtils.addFragmentToActivity(

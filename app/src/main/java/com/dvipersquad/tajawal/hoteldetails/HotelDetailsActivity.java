@@ -23,6 +23,11 @@ public class HotelDetailsActivity extends DaggerAppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hoteldetails_act);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setDisplayShowHomeEnabled(true);
+        }
+
         HotelDetailsFragment hotelDetailsFragment =
                 (HotelDetailsFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.contentFrame);

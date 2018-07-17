@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#E64129</color>
+    <color name="colorPrimaryDark">#D62A13</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorRecyclerRowText">#3a3a3a</color>
     <color name="colorRecyclerRowBackground">#FFF</color>
@@ -10,4 +10,5 @@
     <color name="colorHotelDetailsButtonText">#FFF</color>
     <color name="colorHotelDetailsOverlay">#5000</color>
     <color name="colorFullScreenPhotoBackground">#000</color>
+    <color name="colorRecyclerRowBottomBorder">#cfcfcf</color>
 </resources>

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="@dimen/recycler_row_height"
     android:gravity="center_vertical"
-    android:background="@color/colorRecyclerRowBackground"
-    android:paddingBottom="@dimen/half_margin">
+    android:background="@color/colorRecyclerRowBackground">
 
     <ImageView
         android:id="@+id/imgHotelThumbnail"
@@ -18,9 +18,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/dummy_hotel_name"
-        android:textSize="15sp"
-        android:layout_marginStart="@dimen/margin"
+        android:textSize="17sp"
+        android:textStyle="bold"
         android:textColor="@color/colorRecyclerRowText"
-        android:foregroundGravity="center_vertical" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgHotelThumbnail"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-</LinearLayout>
+    <View
+        android:id="@+id/viewBottomBorder"
+        android:layout_width="match_parent"
+        android:background="@color/colorRecyclerRowBottomBorder"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

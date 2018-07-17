@@ -7,6 +7,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -35,6 +38,9 @@ public class HotelsFragment extends DaggerFragment implements HotelsContract.Vie
     @Inject
     HotelsContract.Presenter presenter;
 
+    /**
+     * Listens for clicks on list elements
+     */
     HotelItemListener listener = new HotelItemListener() {
         @Override
         public void onHotelClick(Hotel clickedHotel) {
@@ -74,15 +80,34 @@ public class HotelsFragment extends DaggerFragment implements HotelsContract.Vie
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.hotels_frag, container, false);
 
-        // Set up hotel list
+        // Set up recyclerview hotel list
         recyclerHotels = root.findViewById(R.id.recyclerHotels);
         recyclerHotels.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerHotels.setLayoutManager(linearLayoutManager);
         recyclerHotels.setAdapter(adapter);
+        // Set up no hotels views
         txtNoHotels = root.findViewById(R.id.txtNoHotels);
         progBarHotelsLoading = root.findViewById(R.id.progBarHotelsLoading);
+
+        setHasOptionsMenu(true);
+
         return root;
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.tasks_fragment_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_refresh:
+                presenter.loadHotels(true);
+                break;
+        }
+        return true;
     }
 
     @Override

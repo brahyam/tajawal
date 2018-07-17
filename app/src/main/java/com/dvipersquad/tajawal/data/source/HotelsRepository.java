@@ -72,7 +72,7 @@ public class HotelsRepository implements HotelsDataSource {
     public void getHotel(@NonNull final Integer hotelId, @NonNull final GetHotelCallback callback) {
 
         // Try cache first
-        if (cachedHotels != null && cachedHotels.isEmpty()) {
+        if (cachedHotels != null && !cachedHotels.isEmpty()) {
             final Hotel cachedHotel = cachedHotels.get(hotelId);
             if (cachedHotel != null) {
                 callback.onHotelLoaded(cachedHotel);
