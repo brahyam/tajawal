@@ -22,7 +22,7 @@ public class HotelsRepository implements HotelsDataSource {
 
     private final HotelsDataSource hotelsLocalDataSource;
 
-    private Map<Integer, Hotel> cachedHotels;
+    Map<Integer, Hotel> cachedHotels;
 
     boolean cacheIsDirty = false;
 
@@ -72,10 +72,12 @@ public class HotelsRepository implements HotelsDataSource {
     public void getHotel(@NonNull final Integer hotelId, @NonNull final GetHotelCallback callback) {
 
         // Try cache first
-        final Hotel cachedHotel = cachedHotels.get(hotelId);
-        if (cachedHotel != null) {
-            callback.onHotelLoaded(cachedHotel);
-            return;
+        if (cachedHotels != null && cachedHotels.isEmpty()) {
+            final Hotel cachedHotel = cachedHotels.get(hotelId);
+            if (cachedHotel != null) {
+                callback.onHotelLoaded(cachedHotel);
+                return;
+            }
         }
 
         // Try local source

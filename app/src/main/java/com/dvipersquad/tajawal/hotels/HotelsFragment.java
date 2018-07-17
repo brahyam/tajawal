@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dvipersquad.tajawal.R;
@@ -43,10 +43,9 @@ public class HotelsFragment extends DaggerFragment implements HotelsContract.Vie
     };
 
     private HotelAdapter adapter;
-    private View noHotelsView;
-    private ImageView noHotelsIcon;
-    private TextView noHotelsMainView;
-    private LinearLayout hotelsView;
+    private TextView txtNoHotels;
+    private RecyclerView recyclerHotels;
+    private ProgressBar progBarHotelsLoading;
 
     @Inject
     public HotelsFragment() {
@@ -76,22 +75,31 @@ public class HotelsFragment extends DaggerFragment implements HotelsContract.Vie
         View root = inflater.inflate(R.layout.hotels_frag, container, false);
 
         // Set up hotel list
-        RecyclerView recyclerHotels = root.findViewById(R.id.recyclerHotels);
+        recyclerHotels = root.findViewById(R.id.recyclerHotels);
         recyclerHotels.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
         recyclerHotels.setLayoutManager(linearLayoutManager);
         recyclerHotels.setAdapter(adapter);
+        txtNoHotels = root.findViewById(R.id.txtNoHotels);
+        progBarHotelsLoading = root.findViewById(R.id.progBarHotelsLoading);
         return root;
     }
 
     @Override
     public void setLoadingIndicator(boolean active) {
-        // TODO: implement loading indicator
+        if (active) {
+            progBarHotelsLoading.setVisibility(View.VISIBLE);
+        } else {
+            progBarHotelsLoading.setVisibility(View.GONE);
+        }
+
     }
 
     @Override
     public void showHotels(List<Hotel> hotels) {
         adapter.replaceData(hotels);
+        recyclerHotels.setVisibility(View.VISIBLE);
+        txtNoHotels.setVisibility(View.GONE);
     }
 
     @Override
@@ -108,7 +116,8 @@ public class HotelsFragment extends DaggerFragment implements HotelsContract.Vie
 
     @Override
     public void showNoHotels() {
-        // TODO: implement no hotels view
+        recyclerHotels.setVisibility(View.GONE);
+        txtNoHotels.setVisibility(View.VISIBLE);
     }
 
     @Override
