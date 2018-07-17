@@ -22,6 +22,8 @@ public interface HotelDetailsContract {
 
         void showPhotoFullScreenUI(String photoUrl);
 
+        void showWebsite(String url);
+
         boolean isActive();
     }
 
@@ -32,6 +34,8 @@ public interface HotelDetailsContract {
         void dropView();
 
         void showHotelPhotoFullScreen(@NonNull Hotel hotel);
+
+        void showBooking();
     }
 
 }

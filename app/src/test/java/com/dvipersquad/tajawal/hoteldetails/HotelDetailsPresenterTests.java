@@ -94,4 +94,15 @@ public class HotelDetailsPresenterTests {
         verify(hotelDetailsView).showPhotoFullScreenUI(any(String.class));
     }
 
+    @Test
+    public void clickOnBookButton_ShowsWebSite() {
+        hotelDetailsPresenter = new HotelDetailsPresenter(
+                HOTEL.getHotelId(), hotelsRepository);
+        hotelDetailsPresenter.takeView(hotelDetailsView);
+        // When booking button is pressed
+        hotelDetailsPresenter.showBooking();
+        // Then website is opened
+        verify(hotelDetailsView).showWebsite(any(String.class));
+    }
+
 }

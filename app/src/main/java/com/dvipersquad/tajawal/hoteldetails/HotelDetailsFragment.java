@@ -2,12 +2,14 @@ package com.dvipersquad.tajawal.hoteldetails;
 
 import android.content.Intent;
 import android.graphics.Paint;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -44,6 +46,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
     TextView txtHotelHighRate;
     TextView txtHotelLowRate;
     TextView txtHotelAddress;
+    Button btnBookNow;
 
     @Inject
     public HotelDetailsFragment() {
@@ -71,6 +74,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
         txtHotelHighRate = root.findViewById(R.id.txtHotelHighRate);
         txtHotelLowRate = root.findViewById(R.id.txtHotelLowRate);
         txtHotelAddress = root.findViewById(R.id.txtHotelAddress);
+        btnBookNow = root.findViewById(R.id.btnBookNow);
         return root;
     }
 
@@ -86,6 +90,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
 
     @Override
     public void showHotel(final Hotel hotel) {
+        // Load image
         if (hotel.getImage() != null && hotel.getImage().size() > 0) {
             Picasso.get()
                     .load(hotel.getImage().get(0).getUrl())
@@ -93,6 +98,7 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
                     .centerCrop()
                     .into(imgHotelDetailsCover);
         }
+        // Load hotel Data if available
         if (hotel.getSummary() != null) {
             txtHotelName.setText(hotel.getSummary().getHotelName());
             if (hotel.getSummary().getHighRate() != null) {
@@ -111,10 +117,17 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
         if (hotel.getLocation() != null) {
             txtHotelAddress.setText(hotel.getLocation().getAddress());
         }
+        // Set click listeners
         viewOverlay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 presenter.showHotelPhotoFullScreen(hotel);
+            }
+        });
+        btnBookNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                presenter.showBooking();
             }
         });
     }
@@ -131,6 +144,13 @@ public class HotelDetailsFragment extends DaggerFragment implements HotelDetails
     public void showPhotoFullScreenUI(String photoUrl) {
         Intent intent = new Intent(getContext(), FullScreenPhotoActivity.class);
         intent.putExtra(FullScreenPhotoActivity.EXTRA_PHOTO_URL, photoUrl);
+        startActivity(intent);
+    }
+
+    @Override
+    public void showWebsite(String url) {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
         startActivity(intent);
     }
 

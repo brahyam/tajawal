@@ -19,6 +19,7 @@ final class HotelDetailsPresenter implements HotelDetailsContract.Presenter {
 
     @Nullable
     private Integer hotelId;
+    private static final String BOOKING_URL = "https://www.tajawal.com/en/hotels-home";
 
     @Inject
     HotelDetailsPresenter(@Nullable Integer hotelId, HotelsRepository hotelsRepository) {
@@ -77,6 +78,13 @@ final class HotelDetailsPresenter implements HotelDetailsContract.Presenter {
     public void showHotelPhotoFullScreen(@NonNull Hotel hotel) {
         if (hotelDetailsView != null && hotel.getImage() != null && hotel.getImage().size() > 0) {
             hotelDetailsView.showPhotoFullScreenUI(hotel.getImage().get(0).getUrl());
+        }
+    }
+
+    @Override
+    public void showBooking() {
+        if (hotelDetailsView != null) {
+            hotelDetailsView.showWebsite(BOOKING_URL);
         }
     }
 }
