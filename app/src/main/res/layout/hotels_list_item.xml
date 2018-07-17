@@ -11,7 +11,7 @@
         android:id="@+id/imgHotelThumbnail"
         android:layout_width="@dimen/recycler_row_thumbnail_width"
         android:layout_height="match_parent"
-        android:background="@mipmap/hotel_placeholder" />
+        android:background="@drawable/hotel_placeholder" />
 
     <TextView
         android:id="@+id/txtHotelName"

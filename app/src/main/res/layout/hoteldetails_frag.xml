@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -8,7 +9,7 @@
         android:id="@+id/imgHotelDetailsCover"
         android:layout_width="match_parent"
         android:layout_height="@dimen/hotel_details_cover_height"
-        android:background="@mipmap/hotel_placeholder" />
+        android:background="@drawable/hotel_placeholder" />
 
     <View
         android:id="@+id/viewOverlay"
@@ -38,7 +39,8 @@
         android:textAllCaps="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgHotelDetailsCover"
-        android:layout_marginTop="@dimen/half_margin" />
+        android:layout_marginTop="@dimen/half_margin"
+        android:layout_marginEnd="@dimen/margin" />
 
     <TextView
         android:id="@+id/txtHotelHighRate"
@@ -46,6 +48,7 @@
         android:layout_height="wrap_content"
         android:text="@string/dummy_hotel_rate"
         android:textSize="18sp"
+        android:textColor="@color/colorHotelDetailsHighPrice"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="@id/btnBookNow"
         android:layout_marginTop="@dimen/margin"
@@ -58,21 +61,35 @@
         android:text="@string/dummy_hotel_rate"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textColor="@color/colorHotelDetailsLowRate"
         app:layout_constraintStart_toEndOf="@id/txtHotelHighRate"
         app:layout_constraintBottom_toBottomOf="@id/btnBookNow"
         android:layout_marginTop="@dimen/margin"
         android:layout_marginStart="@dimen/margin" />
 
     <TextView
+        android:id="@+id/txtHotelAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/address_label"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:textColor="@color/colorHotelDetailsLabel"
+        app:layout_constraintTop_toBottomOf="@id/txtHotelLowRate"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="@dimen/double_margin"
+        android:layout_marginStart="@dimen/margin" />
+
+    <TextView
         android:id="@+id/txtHotelAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="@string/dummy_hotel_address"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@id/txtHotelLowRate"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="@dimen/double_margin"
-        android:layout_marginStart="@dimen/margin" />
+        android:textColor="@color/colorHotelDetailsLabel"
+        app:layout_constraintTop_toBottomOf="@+id/txtHotelAddressLabel"
+        app:layout_constraintStart_toStartOf="@+id/txtHotelAddressLabel"
+        android:layout_marginStart="@dimen/half_margin" />
 
 </android.support.constraint.ConstraintLayout>

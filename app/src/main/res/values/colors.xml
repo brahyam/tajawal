@@ -11,4 +11,7 @@
     <color name="colorHotelDetailsOverlay">#5000</color>
     <color name="colorFullScreenPhotoBackground">#000</color>
     <color name="colorRecyclerRowBottomBorder">#cfcfcf</color>
+    <color name="colorHotelDetailsLabel">#000</color>
+    <color name="colorHotelDetailsLowRate">#000</color>
+    <color name="colorHotelDetailsHighPrice">#333</color>
 </resources>
