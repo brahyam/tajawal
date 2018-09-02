@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/recycler_row_height"
+    android:gravity="center_vertical"
+    android:background="@color/colorRecyclerRowBackground">
+
+    <ImageView
+        android:id="@+id/imgHotelThumbnail"
+        android:layout_width="@dimen/recycler_row_thumbnail_width"
+        android:layout_height="match_parent"
+        android:background="@drawable/hotel_placeholder" />
+
+    <TextView
+        android:id="@+id/txtHotelName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy_hotel_name"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorRecyclerRowText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/imgHotelThumbnail"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/viewBottomBorder"
+        android:layout_width="match_parent"
+        android:background="@color/colorRecyclerRowBottomBorder"
+        android:layout_height="1dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

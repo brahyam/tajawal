@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">Tajawal</string>
+    <string name="app_name">tajawal:</string>
+    <string name="no_hotels_available">There are no hotels available yet</string>
+    <string name="error_loading_hotels">There was an error loading the hotels. Please try again later</string>
+    <string name="dummy_hotel_name">Ascott Park Place Dubai</string>
+    <string name="dummy_hotel_rate">SAR 176</string>
+    <string name="book_now">Book Now</string>
+    <string name="dummy_hotel_address">Sheikh Zayed Road Exit 36 Tecom</string>
+    <string name="loading">Loading...</string>
+    <string name="no_data_available">No data available. Please try again later</string>
+    <string name="refresh">Refresh</string>
+    <string name="address_label">Address</string>
 </resources>
